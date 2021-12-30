@@ -1079,9 +1079,9 @@ return [
         "dadosPessoaisPorEmail" => "{$serviceV3BaseCorporativa}/dadosPessoaisPorEmail",
 
         /**
-         * @url     https://ei.fiocruz.br/services/dss-v3-basecorporativa/buscaCidadePorCod/{cod}
+         * @url     https://ei.fiocruz.br/services/dss-v3-basecorporativa/buscaCidadePorCod/{codGeoNames}
          * @api     buscaCidadePorCod
-         * @param   $cod
+         * @param   $codGeoNames
          * @methods get
          * @middleware("autheticate", "user"={env("GSFERRO_MICROSERVICO_WSO2_EI_USER")} , "password" ={env("GSFERRO_MICROSERVICO_WSO2_EI_PASSWORD")})
          */

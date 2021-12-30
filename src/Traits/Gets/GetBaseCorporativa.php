@@ -52,15 +52,15 @@ trait GetBaseCorporativa
      * @version v3
      * @api     buscaCidadePorCod
      *
-     * @param   string $cod
+     * @param   string $codGeoNames
      * @return  array|json ( "id_cidade", "subdivisao_pais_id", "abreviacao_postal", "designacao", "codigo_geonamesid", "code_geonames", )
      */
-    public function getBuscaCidadePorCod(string $cod)
+    public function getBuscaCidadePorCod(string $codGeoNames)
     {
-        if (empty($cod) || strlen($cod) > 15 ) {
+        if (empty($codGeoNames) || strlen($codGeoNames) > 15 ) {
             return $this->trateReturn();
         }
 
-        return $this->proxyV3XmlBasic("buscaCidadePorCod", "{$cod}");
+        return $this->proxyV3XmlBasic("buscaCidadePorCod", "{$codGeoNames}");
     }
 }
