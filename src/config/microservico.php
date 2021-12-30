@@ -351,6 +351,8 @@ return [
     'https_transporte'            => "{$host_ei_https}/services/transporte",
     'https_service_unidades'      => "{$host_ei_https}/services/Unidades",
 
+    "dadosGeraisPorUuid"          => "{$api_service}-basecorporativa/pessoa",
+
     /*
     |--------------------------------------------
     |Outras APIS - Sistema Mobilidade
