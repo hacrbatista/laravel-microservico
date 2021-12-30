@@ -269,6 +269,7 @@ GSFERRO_MICROSERVICO_WSO2_EI_PASSWORD
     1. BASE CORPORATIVA
         1. `getDadosPessoais(string $cpf)`
         1. `getDadosPessoaisPorEmail(string $email)`
+        1. `getBuscaCidadePorCod(string $cod)`
     1. RSI
         1. `getListarHistoricoChamadosPorCpf(string $cpf)`
         1. `getListarChamadosAbertosPorCpf(string $cpf)`

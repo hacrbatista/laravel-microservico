@@ -44,4 +44,23 @@ trait GetBaseCorporativa
 
         return $this->proxyV3XmlBasic("dadosPessoaisPorEmail", "{$email}");
     }
+
+    /**
+     * @author  Henrique Batista
+     * @method  get
+     * @package Gsferro\MicroServico\Traits\Gets\GetBaseCorporativa
+     * @version v3
+     * @api     buscaCidadePorCod
+     *
+     * @param   string $cod
+     * @return  array|json ( "id_cidade", "subdivisao_pais_id", "abreviacao_postal", "designacao", "codigo_geonamesid", "code_geonames", )
+     */
+    public function getBuscaCidadePorCod(string $cod)
+    {
+        if (empty($cod) || strlen($cod) > 15 ) {
+            return $this->trateReturn();
+        }
+
+        return $this->proxyV3XmlBasic("buscaCidadePorCod", "{$cod}");
+    }
 }

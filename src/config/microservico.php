@@ -1075,6 +1075,15 @@ return [
          * @middleware("autheticate", "user"={env("GSFERRO_MICROSERVICO_WSO2_EI_USER")} , "password" ={env("GSFERRO_MICROSERVICO_WSO2_EI_PASSWORD")})
          */
         "dadosPessoaisPorEmail" => "{$serviceV3BaseCorporativa}/dadosPessoaisPorEmail",
+
+        /**
+         * @url     https://ei.fiocruz.br/services/dss-v3-basecorporativa/buscaCidadePorCod/{cod}
+         * @api     buscaCidadePorCod
+         * @param   $cod
+         * @methods get
+         * @middleware("autheticate", "user"={env("GSFERRO_MICROSERVICO_WSO2_EI_USER")} , "password" ={env("GSFERRO_MICROSERVICO_WSO2_EI_PASSWORD")})
+         */
+        "buscaCidadePorCod" => "{$serviceV3BaseCorporativa}/buscaCidadePorCod",
       
         #############################################
         #        proxy BANCO COMPETENCIAS           #
