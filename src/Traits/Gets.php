@@ -56,7 +56,7 @@ trait Gets
      * @param string $versao
      * @return json
      */
-    private function getApisVersoes(string $endpoint, $params = null, string $versao = "v1")
+    private function getApisVersoes(string $endpoint, $params = null, string $versao = "v2")
     {
         return $this->getSecurity(
             "{$versao}.{$endpoint}",
@@ -67,18 +67,6 @@ trait Gets
     }
 
     /**
-     * para as apis v1
-     *
-     * @param string $endpoint
-     * @param null $params
-     * @return json
-     */
-    private function getApiV1(string $endpoint, $params = null)
-    {
-        return $this->getApisVersoes("{$endpoint}", "{$params}");
-    }
-
-        /**
      * para as apis v2
      *
      * @param string $endpoint
@@ -87,7 +75,7 @@ trait Gets
      */
     private function getApiV2(string $endpoint, $params = null)
     {
-        return $this->getApisVersoes("{$endpoint}", "{$params}", "v2");
+        return $this->getApisVersoes("{$endpoint}", "{$params}");
     }
 
     /**
@@ -100,19 +88,6 @@ trait Gets
     private function getApiV3(string $endpoint, $params = null)
     {
         return $this->getApisVersoes("{$endpoint}", "{$params}", "v3");
-    }
-
-    /**
-     * Tratando apis v1 com retorno de XML
-     *
-     * @param string $endpoint
-     * @param null $params
-     * @return json
-     */
-    private function getApiV1FromReturnXml(string $endpoint, $params = null)
-    {
-        $this->curlSimple = true;
-        return $this->returnXml($this->getApiV1("{$endpoint}", "{$params}"));
     }
 
     /**
@@ -168,19 +143,6 @@ trait Gets
     }
 
     /**
-     * Reuso basico completo para todos os metodos v1
-     *
-     * @param   string $endpoint
-     * @param   $param pode ser null, mas se for enviado, não poder empty
-     * @param   bool $encapsulaApiComArray
-     * @return  array|json
-     */
-    private function proxyV1XmlBasic(string $endpoint, $param = null, bool $encapsulaApiComArray = false)
-    {
-        return $this->proxyVsXmlBasic($endpoint, $param, $encapsulaApiComArray);
-    }
-
-    /**
      * Reuso basico completo para todos os metodos v2
      *
      * @param   string $endpoint
@@ -190,7 +152,7 @@ trait Gets
      */
     private function proxyV2XmlBasic(string $endpoint, $param = null, bool $encapsulaApiComArray = false)
     {
-        return $this->proxyVsXmlBasic($endpoint, $param, $encapsulaApiComArray, "v2");
+        return $this->proxyVsXmlBasic($endpoint, $param, $encapsulaApiComArray);
     }
 
     /**
@@ -206,7 +168,7 @@ trait Gets
         return $this->proxyVsXmlBasic($endpoint, $param, $encapsulaApiComArray, "v3");
     }
 
-    private function proxyVsXmlBasic(string $endpoint, $param = null, bool $encapsulaApiComArray = false, $versao = "v1")
+    private function proxyVsXmlBasic(string $endpoint, $param = null, bool $encapsulaApiComArray = false, $versao = "v2")
     {
         if (!is_null($param) && empty($param)) {
             return $this->trateReturn();
@@ -220,16 +182,9 @@ trait Gets
                     "{$param}"
                 );
             break;
-            case "v2":
+            default: //v2
                 // busca api
                 $api = $this->getApiV2FromReturnXml(
-                    "{$endpoint}",
-                    "{$param}"
-                );
-            break;
-            default: //v1
-                // busca api
-                $api = $this->getApiV1FromReturnXml(
                     "{$endpoint}",
                     "{$param}"
                 );

@@ -8,25 +8,25 @@ trait GetSieSief
      * @author  Henrique Batista
      * @method  get
      * @package Gsferro\MicroServico\Traits\Gets\GetSieSief
-     * @version v1
+     * @version v3
      * @api     candidatosEstrangeirosAprovados
      *
      * @return  array|json ( "uuid_candidato", "id_curso", "orientador", "email_orientador", "telefone_orientador", "area_concentracao", "atendimento_especializado", )
      */
     public function getCandidatosEstrangeirosAprovados()
     {
-        return $this->proxyV1XmlBasic("candidatosEstrangeirosAprovados");
+        return $this->proxyV3XmlBasic("candidatosEstrangeirosAprovados");
     }
 
     /**
      * @author  Henrique Batista
      * @method  get
      * @package Gsferro\MicroServico\Traits\Gets\GetSieSief
-     * @version v1
+     * @version v3
      * @api     dadosCurso
      *
      * @param   string $idCurso
-     * @return  array|json ( "nome_curso", "unidade_ofertante", "nome_programa", "coordenador_curso", "natureza", "tipo", "modailidade", "data_inicio", "data_fim", )
+     * @return  array|json ( "nome_curso", "unidade_ofertante", "nome_programa", "coordenador_curso", "natureza", "tipo", "modalidade", "data_inicio", "data_fim", )
      */
     public function getDadosCurso(string $idCurso)
     {
@@ -34,14 +34,14 @@ trait GetSieSief
             return $this->trateReturn();
         }
 
-        return $this->proxyV1XmlBasic("dadosCurso", "{$idCurso}");
+        return $this->proxyV3XmlBasic("dadosCurso", "{$idCurso}");
     }
 
     /**
      * @author  Henrique Batista
      * @method  get
      * @package Gsferro\MicroServico\Traits\Gets\GetSieSief
-     * @version v1
+     * @version v3
      * @api     documentosPessoaCurso
      *
      * @param   string $uudiCandidato
@@ -54,6 +54,6 @@ trait GetSieSief
             return $this->trateReturn();
         }
 
-        return $this->proxyV1XmlBasic("documentosPessoaCurso", "{$uudiCandidato}/{$idCurso}");
+        return $this->proxyV3XmlBasic("documentosPessoaCurso", "{$uudiCandidato}/{$idCurso}");
     }
 }

@@ -57,31 +57,20 @@ $v2BaseCorporativa = "{$v2HostEi}{$ambientePrefix}/basecorporativa";
 */
 $ambienteServices  = empty($envAmbiente) ? "" : "{$envAmbiente}-";
 # sem dss
-$serviceV1         = "{$hostEiServices}/";
 $serviceV2         = "{$hostEiServices}/v2-";
 $serviceV3         = "{$hostEiServices}/v3-";
-$serviceV1Ambiente = "{$serviceV1}{$ambienteServices}";
 $serviceV2Ambiente = "{$serviceV2}{$ambienteServices}";
 $serviceV3Ambiente = "{$serviceV3}{$ambienteServices}";
 
 # com dss
-$serviceV1Dss         = "{$hostEiServices}/dss-";
 $serviceV2Dss         = "{$hostEiServices}/dss-v2-";
 $serviceV3Dss         = "{$hostEiServices}/dss-v3-";
-$serviceV1DssAmbiente = "{$serviceV1Dss}{$ambienteServices}";
 $serviceV2DssAmbiente = "{$serviceV2Dss}{$ambienteServices}";
 $serviceV3DssAmbiente = "{$serviceV3Dss}{$ambienteServices}";
 
 # com proxy
 $serviceProxy         = "{$hostEiServices}/proxy-";
 $serviceProxyAmbiente = "{$serviceProxy}{$ambienteServices}";
-
-############################################################################################
-####################### V1
-/**
- * @url https://ei.fiocruz.br/services/{$ambienteServices|null}sie_sief
- */
-$serviceV1SieSief = "{$serviceV1Ambiente}sie_sief";
 
 ############################################################################################
 ####################### V2
@@ -135,6 +124,11 @@ $serviceV3Sevidores = "{$serviceV3}servidores";
  * @url https://ei.fiocruz.br/services/dss-v3-{$ambienteServices|null}basecorporativa
  */
 $serviceV3BaseCorporativa = "{$serviceV3DssAmbiente}basecorporativa";
+
+/**
+ * @url https://ei.fiocruz.br/services/dss-v3-{$ambienteServices|null}sie_sief
+ */
+$serviceV3SieSief = "{$serviceV3DssAmbiente}sie_sief";
 ############################################################################################
 
 /*TODO*/
@@ -372,46 +366,6 @@ return [
 
     'service_unidades_v2'      => "{$host_ei_https}/services/UnidadesV2",
     'hierarquia_fiocruz'      => "{$host_ei_https}/hierarquiaFiocruz",
-
-    ///////////////////////////////////////////////////////////////////////////
-    /*
-    |---------------------------------------------------
-    | V1
-    |---------------------------------------------------
-    */
-
-    "v1" => [
-        #############################################
-        #                SIE_SIEF                   #
-        #############################################
-        /**
-         * @url     https://ei.fiocruz.br/services/sie_sief/candidatosEstrangeirosAprovados
-         * @api     candidatosEstrangeirosAprovados
-         * @methods get
-         * @middleware("autheticate", "user"={env("GSFERRO_MICROSERVICO_WSO2_EI_USER")} , "password" ={env("GSFERRO_MICROSERVICO_WSO2_EI_PASSWORD")})
-         */
-        "candidatosEstrangeirosAprovados" => "{$serviceV1SieSief}/candidatosEstrangeirosAprovados",
-
-        /**
-         * @url     https://ei.fiocruz.br/services/sie_sief/dadosCurso/{id_curso}
-         * @param   $id_curso
-         * @api     dadosCurso
-         * @methods get
-         * @middleware("autheticate", "user"={env("GSFERRO_MICROSERVICO_WSO2_EI_USER")} , "password" ={env("GSFERRO_MICROSERVICO_WSO2_EI_PASSWORD")})
-         */
-        "dadosCurso" => "{$serviceV1SieSief}/dadosCurso",
-
-        /**
-         * @url     https://ei.fiocruz.br/services/sie_sief/documentosPessoaCurso/{uudi_candidato}/{id_curso}
-         * @param   $uudi_candidato
-         * @param   $id_curso
-         * @api     documentosPessoaCurso
-         * @methods get
-         * @middleware("autheticate", "user"={env("GSFERRO_MICROSERVICO_WSO2_EI_USER")} , "password" ={env("GSFERRO_MICROSERVICO_WSO2_EI_PASSWORD")})
-         */
-        "documentosPessoaCurso" => "{$serviceV1SieSief}/documentosPessoaCurso",
-
-    ],
 
     ///////////////////////////////////////////////////////////////////////////
     /*
@@ -1136,6 +1090,36 @@ return [
          * @middleware("autheticate", "user"={env("GSFERRO_MICROSERVICO_WSO2_EI_USER")} , "password" ={env("GSFERRO_MICROSERVICO_WSO2_EI_PASSWORD")})
          */
         "buscaCidadePorCod" => "{$serviceV3BaseCorporativa}/buscaCidadePorCod",
+
+        #############################################
+        #                SIE_SIEF                   #
+        #############################################
+        /**
+         * @url     https://ei.fiocruz.br/services/dss-v3-sie_sief/candidatosEstrangeirosAprovados
+         * @api     candidatosEstrangeirosAprovados
+         * @methods get
+         * @middleware("autheticate", "user"={env("GSFERRO_MICROSERVICO_WSO2_EI_USER")} , "password" ={env("GSFERRO_MICROSERVICO_WSO2_EI_PASSWORD")})
+         */
+        "candidatosEstrangeirosAprovados" => "{$serviceV3SieSief}/candidatosEstrangeirosAprovados",
+
+        /**
+         * @url     https://ei.fiocruz.br/services/dss-v3-sie_sief/dadosCurso/{idCurso}
+         * @param   $idCurso
+         * @api     dadosCurso
+         * @methods get
+         * @middleware("autheticate", "user"={env("GSFERRO_MICROSERVICO_WSO2_EI_USER")} , "password" ={env("GSFERRO_MICROSERVICO_WSO2_EI_PASSWORD")})
+         */
+        "dadosCurso" => "{$serviceV3SieSief}/dadosCurso",
+
+        /**
+         * @url     https://ei.fiocruz.br/services/dss-v3-sie_sief/documentosPessoaCurso/{uudiCandidato}/{idCurso}
+         * @param   $uudiCandidato
+         * @param   $idCurso
+         * @api     documentosPessoaCurso
+         * @methods get
+         * @middleware("autheticate", "user"={env("GSFERRO_MICROSERVICO_WSO2_EI_USER")} , "password" ={env("GSFERRO_MICROSERVICO_WSO2_EI_PASSWORD")})
+         */
+        "documentosPessoaCurso" => "{$serviceV3SieSief}/documentosPessoaCurso",
 
         #############################################
         #        proxy BANCO COMPETENCIAS           #
