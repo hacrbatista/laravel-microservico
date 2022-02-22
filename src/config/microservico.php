@@ -126,9 +126,9 @@ $serviceV3Sevidores = "{$serviceV3}servidores";
 $serviceV3BaseCorporativa = "{$serviceV3DssAmbiente}basecorporativa";
 
 /**
- * @url https://ei.fiocruz.br/services/dss-v3-{$ambienteServices|null}sie_sief
+ * @url https://ei.fiocruz.br/services/dss-v3-{$ambienteServices|null}sie-sief
  */
-$serviceV3SieSief = "{$serviceV3DssAmbiente}sie_sief";
+$serviceV3SieSief = "{$serviceV3DssAmbiente}sie-sief";
 ############################################################################################
 
 /*TODO*/
@@ -1092,10 +1092,10 @@ return [
         "buscaCidadePorCod" => "{$serviceV3BaseCorporativa}/buscaCidadePorCod",
 
         #############################################
-        #                SIE_SIEF                   #
+        #                SIE SIEF                   #
         #############################################
         /**
-         * @url     https://ei.fiocruz.br/services/dss-v3-sie_sief/candidatosEstrangeirosAprovados
+         * @url     https://ei.fiocruz.br/services/dss-v3-sie-sief/candidatosEstrangeirosAprovados
          * @api     candidatosEstrangeirosAprovados
          * @methods get
          * @middleware("autheticate", "user"={env("GSFERRO_MICROSERVICO_WSO2_EI_USER")} , "password" ={env("GSFERRO_MICROSERVICO_WSO2_EI_PASSWORD")})
@@ -1103,7 +1103,7 @@ return [
         "candidatosEstrangeirosAprovados" => "{$serviceV3SieSief}/candidatosEstrangeirosAprovados",
 
         /**
-         * @url     https://ei.fiocruz.br/services/dss-v3-sie_sief/dadosCurso/{idCurso}
+         * @url     https://ei.fiocruz.br/services/dss-v3-sie-sief/dadosCurso/{idCurso}
          * @param   $idCurso
          * @api     dadosCurso
          * @methods get
@@ -1112,7 +1112,7 @@ return [
         "dadosCurso" => "{$serviceV3SieSief}/dadosCurso",
 
         /**
-         * @url     https://ei.fiocruz.br/services/dss-v3-sie_sief/documentosPessoaCurso/{uudiCandidato}/{idCurso}
+         * @url     https://ei.fiocruz.br/services/dss-v3-sie-sief/documentosPessoaCurso/{uudiCandidato}/{idCurso}
          * @param   $uudiCandidato
          * @param   $idCurso
          * @api     documentosPessoaCurso
