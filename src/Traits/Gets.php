@@ -12,6 +12,7 @@ use Gsferro\MicroServico\Traits\Gets\GetSicave;
 use Gsferro\MicroServico\Traits\Gets\GetSief;
 use Gsferro\MicroServico\Traits\Gets\GetTransporte;
 use Gsferro\MicroServico\Traits\Gets\GetLoginUnico;
+use Gsferro\MicroServico\Traits\Gets\GetSieSief;
 
 trait Gets
 {
@@ -39,6 +40,7 @@ trait Gets
         , GetRsi
         , GetBaseCorporativa
         , GetLoginUnico
+        , GetSieSief
         ;
 
     /*
