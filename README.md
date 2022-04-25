@@ -254,6 +254,14 @@ GSFERRO_MICROSERVICO_WSO2_EI_PASSWORD
         1. `getBuscarPais(string $uuidPais)`
         1. `getBuscarCidade(string $uuidCidade)`
         1. `getBuscarUF(string $uuidUf)`
+    1. SIE SIEF
+        1. `getCandidatosEstrangeirosAprovados()`
+        1. `getDadosCurso(string $idCurso)`
+        1. `getDocumentosPessoaCurso(string $uudiCandidato, string $idCurso)`
+        1. `getCursoCandidatosAprovados()`
+        1. `getCursoCandidatosPorUuid(string $uudiCandidato)`
+        1. `getDadosSolicitanteCurso(string $idCurso, string $uudiCandidato)`
+        1. `getCursoCandidatosMatriculados()`
     1. MOBILIDADE
         1. `getObterEditaisPublicados()`
         1. `getObterAnexosEdital(int $idEdital)`
