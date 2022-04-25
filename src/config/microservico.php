@@ -1148,6 +1148,14 @@ return [
          */
         "dadosSolicitanteCurso" => "{$serviceV3SieSief}/dadosSolicitanteCurso",
 
+        /**
+         * @url     https://ei.fiocruz.br/services/dss-v3-sie-sief/cursoCandidatosMatriculados
+         * @api     cursoCandidatosMatriculados
+         * @methods get
+         * @middleware("autheticate", "user"={env("GSFERRO_MICROSERVICO_WSO2_EI_USER")} , "password" ={env("GSFERRO_MICROSERVICO_WSO2_EI_PASSWORD")})
+         */
+        "cursoCandidatosMatriculados" => "{$serviceV3SieSief}/cursoCandidatosMatriculados",
+
         #############################################
         #        proxy BANCO COMPETENCIAS           #
         #############################################

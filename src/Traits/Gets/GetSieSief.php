@@ -109,4 +109,18 @@ trait GetSieSief
 
         return $this->proxyV3XmlBasic("dadosSolicitanteCurso", "{$idCurso}/{$uudiCandidato}");
     }
+
+    /**
+     * @author  Henrique Batista
+     * @method  get
+     * @package Gsferro\MicroServico\Traits\Gets\GetSieSief
+     * @version v3
+     * @api     cursoCandidatosMatriculados
+     *
+     * @return  array|json ( "uuid_candidato", "nome_candidato", "id_curso" )
+     */
+    public function getCursoCandidatosMatriculados()
+    {
+        return $this->proxyV3XmlBasic("cursoCandidatosMatriculados");
+    }
 }
